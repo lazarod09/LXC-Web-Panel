@@ -23,7 +23,12 @@ fi
 
 echo 'Installing requirement...'
 
-sudo apt install -y python3-flask git
+sudo apt install -y git python3-pip python3-setuptools
+
+python3 -c 'import lwp' &> /dev/null || {
+	echo '| + lwp Python...'
+	sudo pip3 install lwp> /dev/null
+}
 
 echo 'Cloning LXC Web Panel...'
 git clone -b 0.2 https://github.com/lxc-webpanel/LXC-Web-Panel.git "$INSTALL_DIR"
